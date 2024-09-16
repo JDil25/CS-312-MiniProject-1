@@ -44,7 +44,7 @@ app.get('/edit/:id', (req, res) => {
     res.render('edit', { post }); // Render the 'edit.ejs' view, passing the specific post to pre-fill the form fields
 });
 
-// POST route to handle the form submission for editing an existing post
+// POST route handles the form submission for editing an existing post
 app.post('/edit/:id', (req, res) => {
     const { title, content, name } = req.body; // Destructure the updated data from the request body
     const postIndex = posts.findIndex(p => p.id == req.params.id); // Find the index of the post to update by its ID
@@ -53,13 +53,13 @@ app.post('/edit/:id', (req, res) => {
     res.redirect('/'); // Redirect back to the homepage after editing
 });
 
-// POST route to handle deletion of a blog post
+// POST route handles deletion of a blog post
 app.post('/delete/:id', (req, res) => {
     posts = posts.filter(p => p.id != req.params.id); // Remove the post with the given ID from the 'posts' array
     res.redirect('/'); // Redirect to the homepage after deletion
 });
 
-// Start the server
+// Starts server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`); // Log a message to indicate the server is running
 });
